@@ -5,8 +5,8 @@ import './App.css';
 function App() {
 return (
     <div className='login'>
-        <a href='./login.js' >login</a><br />
-        <a href="./Register.js">No tienes cuenta? Registrate aquí</a>
+        <a href='./login.js' >Inicia sesión</a><br />
+        <a href="./Register.js">Registrate</a>
     </div>
 );
 }

@@ -12,7 +12,6 @@ root.render(
     <App />
     <Login />
     <Register />
-
   </React.StrictMode>
 );
 
