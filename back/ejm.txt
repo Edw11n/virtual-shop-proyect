@@ -1,3 +1,7 @@
 git add .
 git  commit -m "Added files for testing"
 git push origin main
+
+git checkout main
+git pull origin testing
+git add . (return)  
