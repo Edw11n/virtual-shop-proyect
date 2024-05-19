@@ -1,9 +1,9 @@
 import React from 'react';
 import './NavBar.css';
 import logo from '../../assets/images/logo.png';
-import cartIcon from '../../assets/images/CartIcon.png';
-
-function NavBar({onLoginClick, onRegisterClick}) {
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+function NavBar({onLoginClick, onRegisterClick, toggleCart}) {
 return (
     <nav className="navbar">
         <div className='logo' >
@@ -17,8 +17,8 @@ return (
             <button onClick={onLoginClick} >Entra</button>
             <button onClick={onRegisterClick} > Registrate</button>
         </div>
-        <div className="cart">
-            <img src={cartIcon} alt="Icono de carrito" />
+        <div className="cart-icon" onClick={toggleCart} >
+                <FontAwesomeIcon icon={faShoppingCart} />
             <span className="cart-count">0</span> {/* Contador de productos en el carrito */}
         </div>
     </nav>
