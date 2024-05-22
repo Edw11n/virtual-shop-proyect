@@ -1,7 +1,9 @@
 
 import './ShoppingCart.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
-function ShoppingCart ({onClose, cartItems}){
+function ShoppingCart ({onClose, cartItems, removeItems}){
     return(
         <div className="shopping-cart" >
             <div className="shopping-cart-content" >
@@ -17,6 +19,9 @@ function ShoppingCart ({onClose, cartItems}){
                                     <h4>{item.name}</h4>
                                     <p>{item.price}</p>
                                 </div>
+                                    <button className="remove-button" onClick={() => removeItems(index)}>
+                                    <FontAwesomeIcon icon={faTrash} />
+                                </button>
                             </div>
                         ))
                     )}
