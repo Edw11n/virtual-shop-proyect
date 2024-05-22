@@ -21,15 +21,15 @@ function App() {
     const [cartItems, setCartItems] = useState([]);
 
     const products = [
-        { id: 1, name: 'Llavero Escoba', price: '$10', image: img1},
-        { id: 2, name: 'Llavero Triangular', price: '$20', image: img2},
-        { id: 3, name: 'Llavero Tortuga', price: '$15', image: img3},
-        { id: 4, name: 'Llavero Cruz', price: '$15', image: img4},
-        { id: 5, name: 'Manilla Sencilla', price: '$15', image: img5},
-        { id: 6, name: 'Manilla Doble', price: '$15', image: img6},
-        { id: 7, name: 'Manilla Triple', price: '$15', image: img7},
-        { id: 8, name: 'Manilla de Chaquiras', price: '$15', image: img8},
-        { id: 9, name: 'Collar', price: '$15', image: img9},
+        { id: 1, name: 'Llavero Escoba', price: '$10.000', image: img1},
+        { id: 2, name: 'Llavero Triangular', price: '$12.000', image: img2},
+        { id: 3, name: 'Llavero Tortuga', price: '$15.000', image: img3},
+        { id: 4, name: 'Llavero Cruz', price: '$15.000', image: img4},
+        { id: 5, name: 'Manilla Sencilla', price: '$8.000', image: img5},
+        { id: 6, name: 'Manilla Doble', price: '$10.000', image: img6},
+        { id: 7, name: 'Manilla Triple', price: '$12.000', image: img7},
+        { id: 8, name: 'Manilla de Chaquiras', price: '$20.000', image: img8},
+        { id: 9, name: 'Collar', price: '$25.000', image: img9},
 ];
 
     const handleLoginClick = () => {
