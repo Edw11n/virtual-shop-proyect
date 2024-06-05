@@ -17,6 +17,10 @@
   max-width: 400px;
   width: 90%; 
   text-align: center;
+  transition: transform 0.4s;
+}
+input:hover{
+    transform: scale(1.007);
 }
 
 input[type='text'],
@@ -31,13 +35,18 @@ input[type='password'],
 }
 
 .login-content button {
-  background-color: #28a745;
+  background-color: #416ea8;
   color: white;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, transform 0.3s;
 }
 
-button:hover {
-  background-color: #588e6a;
+.login-onclose:hover {
+  background-color: #df6e6e;
+  transform: scale(1.01);
+}
+.login-verify:hover{
+  background-color:  rgba(42, 155, 57, 0.8);
+  transform: scale(1.01);
 }
 

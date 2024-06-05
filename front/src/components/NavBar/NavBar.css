@@ -15,10 +15,11 @@
 .logo svg {
     font-size: 2em;
     color: rgb(0, 0, 0);
+    transition: transform 0.3s;
 }
 
 .logo:hover svg {
-    color: #218838;
+    transform: scale(1.05);
 }
 
 .search {
@@ -35,6 +36,10 @@
     border: 1px solid #ccc  ;
     border-radius: 4px;
     width: 10rem;
+    transition: transform 0.2s;
+}
+.search input:hover{
+    transform: scaleY(1.05);
 }
 .search button {
     padding: 8px 16px;
@@ -43,12 +48,16 @@
     border: 1px solid #ccc;
     border-radius: 4px;
     cursor: pointer;
+    transition: transform 0.2s;
 }
-
 .search button:hover {
     background-color: #b6b6b6;
+    transform: scale(1.05);
 }
-
+.search button:active{
+    background-color: #848181;
+    transform: scale(1);
+}
 .entry-options {
     display: flex;
     align-items: center;
@@ -61,18 +70,18 @@
     padding: 8px 16px;
     border: none;
     border-radius: 4px;
-    background-color: #28a745;
+    background-color: #416ea8;
     color: #fff;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.3s;
 }
 
 .entry-options button:hover {
-    background-color: #218838;
+    background-color: #2f45bf;
     transform: scale(1.05);
 }
 .entry-options button:active {
-    background-color: #1e7e34;
+    background-color: #4d2cb1;
     transform: scale(1);
 }
 .cart-icon {
@@ -84,10 +93,11 @@
 .cart-icon svg {
     font-size: 2em;
     color: rgb(0, 0, 0);
+    transition: transform 0.3s;
 }
 
 .cart-icon:hover svg {
-    color: #218838;
+    transform: scale(1.05)
 }
 .my-account{
     padding: 8px 16px;
@@ -97,7 +107,8 @@
 .my-account svg{
     font-size: 2em;
     color: rgb(0, 0, 0);
+    transition: transform 0.3s;
 }
 .my-account:hover svg{
-    color: #218838;
+    transform: scale(1.05)
 }

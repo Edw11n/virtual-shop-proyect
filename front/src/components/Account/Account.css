@@ -17,3 +17,20 @@
     width: 90%; 
     text-align: center;
 }
+.account-content button {
+    margin: 10px auto;
+    padding: 10px;
+    width: calc(100% - 20px);
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.account-content button {
+    background-color: #28a745;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #588e6a;
+}

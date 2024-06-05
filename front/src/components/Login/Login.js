@@ -44,8 +44,8 @@ return (
         <h3>Iniciar sesión</h3>
         <input type='text' placeholder='correo electrónico' value={email} onChange={(e) => setEmail(e.target.value)} /><br />
         <input type='password' placeholder='contraseña' value={password} onChange={(e) => setPassword(e.target.value)} /><br />
-        <button onClick={verifyLogin}>Iniciar sesión</button>
-        <button onClick={onClose}>Cerrar</button>
+        <button className="login-verify" onClick={verifyLogin}>Iniciar sesión</button>
+        <button className="login-onclose" onClick={onClose}>Cerrar</button>
         {message && <p>{message}</p>}
         {isAdmin && <Manage />} {/*renderiza el componente Manage*/}
         </div>

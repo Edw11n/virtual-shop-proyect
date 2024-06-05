@@ -1,0 +1,15 @@
+
+
+body{
+    background-image: url('./assets/images/background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+nav{
+    background-image: url('./assets/images/background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+

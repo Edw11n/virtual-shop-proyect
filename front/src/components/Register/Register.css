@@ -19,8 +19,13 @@
     text-align: center;
 }
 
-.input[type='text'], input[type='password'],
-
+input[type='text'], input[type='password'],
+input{
+    transition: transform 0.4s;
+}
+input:hover{
+    transform: scale(1.007);
+}
 .register-content button {
     margin: 10px auto;
     padding: 10px;
@@ -30,13 +35,16 @@
 }
 
 .register-content button {
-    background-color: #28a745;
+    background-color: #416ea8;
     color: white;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.3s;
 }
-
-button:hover {
-    background-color: #588e6a;
+.register-onclose:hover {
+    background-color: #df6e6e;
+    transform: scale(1.01);
 }
-
+.register-onregister:hover{
+    background-color: rgba(42, 155, 57, 0.8);;
+    transform: scale(1.01);
+}

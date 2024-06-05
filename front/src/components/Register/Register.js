@@ -53,8 +53,8 @@ function Register({onClose}) {
                 <input type='text' placeholder='Correo electrónico' value={email} onChange={(e) => setEmail(e.target.value)}></input><br />
                 <input type='password' placeholder='Contraseña' value={password} onChange={(e) => setPassword(e.target.value)}></input><br />
                 <input type='password' placeholder='Repetir contraseña' value={repeatPassword} onChange={(e) => setRepeatPassword(e.target.value)}></input><br />
-                <button onClick={onRegister}>Registrarse</button><br />
-                <button onClick={onClose}>Cerrar</button>
+                <button className="register-onregister" onClick={onRegister}>Registrarse</button><br />
+                <button  className="register-onclose" onClick={onClose}>Cerrar</button>
                 {mensaje && <p>{mensaje}</p>}
             </div>
         </div>

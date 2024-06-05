@@ -15,19 +15,18 @@ return (
             <input type='text' placeholder='Busca productos...'></input>
             <button type='submit'>Buscar</button>
         </div>
-        <div className='entry-options'>
+        
         {!user ? (
-                    <>
+                    <div className="entry-options">
                         <button onClick={onLoginClick}>Entra</button>
                         <button onClick={onRegisterClick}>Regístrate</button>
-                    </>
+                    </div>
                 ) : (
                     <div className="my-account">
                         <FontAwesomeIcon icon={faUser} onClick={showAccount} />
                         <button onClick={logout}>Cerrar Sesión</button>
                     </div>
                 )}
-        </div>
         <div className="cart-icon" onClick={toggleCart} >
                 <FontAwesomeIcon icon={faShoppingCart} />
         </div>
