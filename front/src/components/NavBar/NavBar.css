@@ -1,5 +1,4 @@
 .navbar{
-    
     height: 50px; 
     padding: 10px 20px; 
     background-color: #ffffff; 
@@ -88,5 +87,17 @@
 }
 
 .cart-icon:hover svg {
+    color: #218838;
+}
+.account{
+    padding: 8px 16px;
+    cursor: pointer;
+    position: relative;
+}
+.account svg{
+    font-size: 2em;
+    color: rgb(0, 0, 0);
+}
+.account:hover svg{
     color: #218838;
 }

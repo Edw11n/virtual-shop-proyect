@@ -41,13 +41,13 @@ app.get('/usuarios', (req, res) => {
   
   // Crear un nuevo usuario
   app.post('/users', (req, res) => {
-    const { name, lastname, username, paswword, email, idrol, idstatus } = req.body;
-    if (!name || !lastname || !username || !paswword || !email || !idrol || !idstatus) {
+    const { name, lastname, username, password, email, idrol, idstatus } = req.body;
+    if (!name || !lastname || !username || !password || !email || !idrol || !idstatus) {
       res.status(400).send('Por favor proporciona nombre, lastname, username, paswword, email, rol, status');
       return;
     }
   
-    db.query('INSERT INTO users (Users_name, Users_lastname, Users_username, Users_paswword, Users_email, Users_idrol, Users_idstatus) VALUES (?, ?, ?, ?, ?, ?, ?)', [name, lastname, username, paswword, email, idrol, idstatus ], (err, result) => {
+    db.query('INSERT INTO users (Users_name, Users_lastname, Users_username, Users_email, Users_password, Users_idrol, Users_idstatus) VALUES (?, ?, ?, ?, ?, ?, ?)', [name, lastname, username, email, password, idrol, idstatus ], (err, result) => {
       if (err) {
         console.error('Error al crear usuario:', err);
         res.status(500).send('Error al crear usuario');
@@ -79,7 +79,7 @@ app.get('/usuarios', (req, res) => {
     app.post('/categoria', (req, res) => {
         const { name, descripcion, estado} = req.body;
         if (!name || !descripcion || !estado) {
-            res.status(400).send('Por favor proporcione nobre, descripcion y estado');
+            res.status(400).send('Por favor proporcione nombre, descripcion y estado');
             return;
         }
 
@@ -158,7 +158,11 @@ app.get('/usuarios', (req, res) => {
         res.status(500).send('Error al eliminar usuario');
         return;
       }
-      res.send('Usuario eliminado exitosamente');
+      if (result.affectedRows === 1) {
+        res.send('Usuario eliminado exitosamente');
+      } else {
+        res.status(404).send('No se encontró ningún usuario con el ID proporcionado');
+      }
     });
   });
 

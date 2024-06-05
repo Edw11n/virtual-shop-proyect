@@ -1,6 +1,8 @@
 import React, {useState} from'react';
 import NavBar from './components/NavBar/NavBar.js';
 import Login from './components/Login/Login.js';
+import { UserProvider } from './UserContext';
+import Account from './components/Account/Account.js';
 import Register from './components/Register/Register.js';
 import Product from './components/Product/Product.js';
 import ShoppingCart from './components/ShoppingCart/ShoppingCart.js';
@@ -19,6 +21,7 @@ function App() {
     const [showRegisterForm, setShowRegisterForm] = useState(false);
     const [showShoppingCart, setShowShoppingCart] = useState(false);
     const [cartItems, setCartItems] = useState([]);
+    const [showAccount, setShowAccount] = useState(false);
 
     const products = [
         { id: 1, name: 'Llavero Escoba', price: '$10.000', image: img1},
@@ -58,12 +61,21 @@ function App() {
         const newCartItems = cartItems.filter((item, i) => i !== index);
         setCartItems(newCartItems);
     };
+    const handleShowAccount = () => {
+        setShowAccount(true);
+    };
+    
+    const handleCloseAccount = () => {
+        setShowAccount(false);
+    };
     return (
+        <UserProvider>
         <div className="App">
-            <NavBar onLoginClick={handleLoginClick} onRegisterClick={handleRegisterClick} toggleCart={handleToggleShoppingCart} />
+            <NavBar onLoginClick={handleLoginClick} onRegisterClick={handleRegisterClick} toggleCart={handleToggleShoppingCart} showAccount={handleShowAccount}/>
             {showLoginForm && <Login onClose={handleCloseLoginForm}/>}
             {showRegisterForm && <Register onClose={handleCloseRegisterForm}/>}
             {showShoppingCart && <ShoppingCart onClose={handleCloseShoppingCart} cartItems={cartItems} removeItems={handleRemoveFromCart}/>}
+            {showAccount && <Account onClose={handleCloseAccount} />}
             <div className="product-list">
                 {products.map(product => (
                     <Product
@@ -74,6 +86,7 @@ function App() {
                         addToCart={() => handleAddToCart(product)}
                     />))}</div>
         </div>
+        </UserProvider>
     );
 
 }
