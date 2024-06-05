@@ -3,32 +3,36 @@ import Axios from "axios";
 import './Register.css';
 
 function Register({onClose}) {
+        //se define estados para controlar los campos del formulario
         const [name, setName] = useState("");
         const [lastname, setLastname] = useState("");
         const [username, setUsername] = useState("");
         const [email, setEmail] = useState("");
         const [password, setPassword] = useState("");
         const [repeatPassword, setRepeatPassword] = useState("");
-        const [mensaje, setMensaje] = useState(""); // Agrega estado para el mensaje
+        const [mensaje, setMensaje] = useState("");
 
-        //en esta funcion add si algun campo está sin completar dará el mensaje predefinido, sino, continuará la acción.
+        //funcion que se inicializa al hacer click en el boton de registrarse
         const onRegister = () => {
+            //verificacion de que no haya campos vacios
             if (!name || !lastname|| !username || !email || !password || !repeatPassword){ 
+            //mensaje si se encuentra campos vacios
             setMensaje("Por favor, complete todos los campos");
             return;
         }
+        //se verifica que las contraseñas ingresadas sean iguales
         if (password !== repeatPassword) {
             setMensaje("Las contraseñas no coinciden");
             return;
         }
-          //se usa la biblioteca axios para escuchar la ruta definida y usando el método .post envia la solicitud a la funcion de devolucion siguiente
+        //envío de los datos ingresados al servidor usando Axios
         Axios.post('http://localhost:5000/register', {
             name: name,
             lastname: lastname,
             username: username,
             email: email,
             password: password,
-            //actualiaza las variables de estado luego de que se realiza la solicitud correctamente 
+        //actualiaza los estados y mensaje de confirmacion
         }).then(response => {
             setMensaje("Datos enviados correctamente");
             setName("");
@@ -36,7 +40,7 @@ function Register({onClose}) {
             setUsername("");
             setEmail("");
             setPassword("");
-            //si no se realiza correactamente se mostrará el mensaje de error en pantalla y consola
+        //mensaje de error en caso de fallo
         }).catch(error => {
             setMensaje("Hubo un error al enviar los datos. Por favor, inténtelo de nuevo más tarde.");
             console.error('Error:', error);

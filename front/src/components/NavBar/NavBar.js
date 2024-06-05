@@ -5,10 +5,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart, faUser } from '@fortawesome/free-solid-svg-icons';
 import { faArtstation } from '@fortawesome/free-brands-svg-icons';
 function NavBar({onLoginClick, onRegisterClick, toggleCart, showAccount}) {
+    //se obtiene el usuario y la funcion "logout" del UserContext
     const { user, logout } = useContext(UserContext);
 return (
     <nav className="navbar">
-        <div className='logo' >
+        <div className='logo'  >
         <FontAwesomeIcon icon={faArtstation} />
         </div>
         <div className='search'>

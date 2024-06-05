@@ -19,6 +19,7 @@ function ShoppingCart ({onClose, cartItems, removeItems}){
                                     <h4>{item.name}</h4>
                                     <p>{item.price}</p>
                                 </div>
+                                    {/* Boton para eliminar un producto del carrito */}
                                     <button className="remove-button" onClick={() => removeItems(index)}>
                                     <FontAwesomeIcon icon={faTrash} />
                                 </button>
@@ -26,7 +27,9 @@ function ShoppingCart ({onClose, cartItems, removeItems}){
                         ))
                     )}
                 </div>
+                {/* Boton para cerrar el carrito de compras */}
                 <button  className='cancel-buy-button' onClick={onClose} >Cancelar</button>
+                {/* Boton para confirmar la compra */}
                 <button className='confirm-buy-button' >Comprar</button>
             </div>
         </div>

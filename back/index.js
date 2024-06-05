@@ -166,6 +166,37 @@ app.get('/usuarios', (req, res) => {
     });
   });
 
+  //Inicio de sesion
+  app.post('/login', (req, res) => {
+    const { email, password } = req.body;
+
+    // Consulta para encontrar al usuario por correo electrónico
+    const query = 'SELECT * FROM usuarios WHERE Users_email = ?';
+    db.query(query, [email], (err, results) => {
+        if (err) throw err;
+
+        if (results.length > 0) {
+            const user = results[0];
+
+            // Comparar la contraseña ingresada con la contraseña almacenada en la base de datos
+            bcrypt.compare(password, user.password, (err, isMatch) => {
+                if (err) throw err;
+
+                if (isMatch) {
+                    res.json({
+                        Users_idrol: user.idrol,
+                        Users_name: user.name,
+                        Users_email: user.email
+                    });
+                } else {
+                    res.status(401).json({ message: 'Correo electrónico o contraseña incorrectos' });
+                }
+            });
+        } else {
+            res.status(401).json({ message: 'Correo electrónico o contraseña incorrectos' });
+        }
+    });
+});
 app.listen(port, () => {
   console.log(`Servidor backend corriendo en http://localhost:${port}`);
 });

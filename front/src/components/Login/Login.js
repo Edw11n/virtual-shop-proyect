@@ -5,34 +5,42 @@ import './Login.css';
 import Manage from '../Manage/Manage';
 
 function Login({ onClose }) {
+    //estados para controlar los campos del formulario
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [message, setmessage] = useState("");
     const [isAdmin, setIsAdmin] = useState(false);
     const { setUser } = useContext(UserContext);
 
-const verifyLogin = () => {
+    //la funcion se ejecuta al hacer click de iniciar sesion
+    const verifyLogin = () => {
+    //verifica que los campos esten completos
     if (!email || !password) {
+        //mensaje en caso de que algun campo no esté relleno
         setmessage("Por favor, complete todos los campos");
     return;
     }
 
+    //verifica en la base de datos los datos ingresador a travez de axios
     Axios.post('http://localhost:5000/login', {
         email,
         password
     }).then(response => {
         const { Users_idrol, Users_name, Users_email } = response.data;
-
+    //verificacion del rol del usuario
     if (Users_idrol === 1) {
+        //si el usuario es administrador
         setIsAdmin(true);
         setUser({ role: 'admin', name: Users_name, email: Users_email });
     } else {
+        //si el usuario no es administrador
         setmessage("Inicio de sesión exitoso como usuario");
         setUser({ role: 'user', name: Users_name, email: Users_email });
-        // Cerrar el login
+        // Cerrar el formulario de login
         onClose();
     }
     }).catch(error => {
+        //si hubo algun fallo al iniciar sesion
         setmessage("Hubo un error al iniciar sesión. Por favor, inténtelo de nuevo más tarde.");
         console.error('Error:', error);
     });

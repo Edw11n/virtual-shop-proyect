@@ -17,13 +17,19 @@ import img7 from './assets/images/img7.png';
 import img8 from './assets/images/img8.png';
 import img9 from './assets/images/img9.png';
 function App() {
+    //controla la visibilidad del formulario de iniciar sesión
     const [showLoginForm, setShowLoginForm] = useState(false);
+    //controla la visibilidad del formulario de registro
     const [showRegisterForm, setShowRegisterForm] = useState(false);
+    //controla la visibilidad del carrito de compras
     const [showShoppingCart, setShowShoppingCart] = useState(false);
+    //controla y muestra los productos en el carrito de compras
     const [cartItems, setCartItems] = useState([]);
+    //controla la visibilidad de la informacion del usuario
     const [showAccount, setShowAccount] = useState(false);
 
-    const products = [
+    //listado de productos de la tienda
+    const products = [ 
         { id: 1, name: 'Llavero Escoba', price: '$10.000', image: img1},
         { id: 2, name: 'Llavero Triangular', price: '$12.000', image: img2},
         { id: 3, name: 'Llavero Tortuga', price: '$15.000', image: img3},
@@ -34,37 +40,48 @@ function App() {
         { id: 8, name: 'Manilla de Chaquiras', price: '$20.000', image: img8},
         { id: 9, name: 'Collar', price: '$25.000', image: img9},
 ];
-
+    //funcion para mostrar el formulario de inicio de sesion
     const handleLoginClick = () => {
         setShowLoginForm(true);
     };
+    //funcion para ocultar el formulario de inicio de sesion
     const handleCloseLoginForm = () => {
         setShowLoginForm(false);
     };
 
+    //funcion para mostrar el formulario de registro
     const handleRegisterClick = () => {
         setShowRegisterForm(true);
     };
+    //funcion para ocultar el formulario de registro
     const handleCloseRegisterForm = () => {
         setShowRegisterForm(false);
     };
+
+    //funcion para mostrar el carrito de compras
     const handleToggleShoppingCart = () => {
         setShowShoppingCart(true);
     };
+    //funcion para ocultar el carrito de compras
     const handleCloseShoppingCart = () => {
         setShowShoppingCart(false);
     };
+
+    //funcion para añadir productos al carrito de compras
     const handleAddToCart = (product) => {
         setCartItems([...cartItems, product]);
     };
+    //funcion para eliminar productos del carrito de compras
     const handleRemoveFromCart = (index) => {
         const newCartItems = cartItems.filter((item, i) => i !== index);
         setCartItems(newCartItems);
     };
+
+    //funcion para mostrar la informacion de la cuenta del usuario
     const handleShowAccount = () => {
         setShowAccount(true);
     };
-    
+    //funcion para ocultar la informacion de la cuenta del usuario
     const handleCloseAccount = () => {
         setShowAccount(false);
     };

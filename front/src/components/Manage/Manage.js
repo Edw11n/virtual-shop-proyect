@@ -2,30 +2,37 @@ import React, { useState, useEffect } from "react";
 import Axios from "axios";
 
 function Manage() {
+    //estados para almacenar el listado de usuario, carga y error
     const [usuarios, setUsuarios] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    // Obtener el listado de usuarios 
     useEffect(() => {
         obtenerUsuarios();
     }, []);
+    //obtener el listado de usuarios desde la base de datos
     const obtenerUsuarios =() => {
         Axios.get('http://localhost:5000/usuarios')
     .then(response => {
         setUsuarios(response.data);
         setLoading(false);
     })
+    //en caso de eror
     .catch(error => {
         console.error('Error al obtener usuarios:', error);
         setError('Error al obtener usuarios. Por favor, inténtelo de nuevo más tarde.');
         setLoading(false);
     });
 };
+//funcion para eliminar un usuario de la base de datos a traves de axios
 const eliminarUsuario = (id) => {
     Axios.delete(`http://localhost:5000/usuarios/${id}`)
     .then(response => {
         console.log(response.data);
+        //obtener la lista de usuarios actualizada al eliminar uno
         obtenerUsuarios();
     })
+    //en caso de error
     .catch(error => {
         console.error('Error al eliminar usuario:', error);
     });
@@ -40,6 +47,7 @@ if (error) {
 }
 
 return (
+    //renderizado de la tabla de usuarios
     <div>
     <h2>Listado de usuarios registrados</h2>
     <table>
