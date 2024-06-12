@@ -1,20 +1,19 @@
 
 const express = require('express');
-const mysql = require('mysql');
-const bodyParser = require('body-parser');
+const mysql = require('mysql2');
 const cors = require('cors');
 
 const app = express();
-const port = 5000;
-
 app.use(cors());
-app.use(bodyParser.json());
+app.use(express.json());
+const portconnect = 3001;
 
 const db = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: '',
-    database: 'apptienda'
+    password: 'wasd',
+    database: 'apptienda',
+    port: 3306
   });
 
 db.connect(err => {
@@ -28,8 +27,9 @@ db.connect(err => {
 // Rutas para el CRUD
 
 // Obtener todos los usuarios
-app.get('/usuarios', (req, res) => {
-        db.query('SELECT * FROM usuarios', (err, results) => {
+//no probado
+app.get('/users', (req, res) => {
+        db.query('SELECT * FROM users', (err, results) => {
             if (err) {
                 console.error('Error al obtener usuarios:', err);
                 res.status(500).send('Error al obtener usuarios');
@@ -40,14 +40,15 @@ app.get('/usuarios', (req, res) => {
     });
   
   // Crear un nuevo usuario
+  //incorporado
   app.post('/users', (req, res) => {
-    const { name, lastname, username, password, email, idrol, idstatus } = req.body;
-    if (!name || !lastname || !username || !password || !email || !idrol || !idstatus) {
-      res.status(400).send('Por favor proporciona nombre, lastname, username, paswword, email, rol, status');
+    const { name, lastname, username, password, email } = req.body;
+    if (!name || !lastname || !username || !password || !email ) {
+      res.status(400).send('Por favor proporciona nombre, apellido, usuario, email y contraseña');
       return;
     }
   
-    db.query('INSERT INTO users (Users_name, Users_lastname, Users_username, Users_email, Users_password, Users_idrol, Users_idstatus) VALUES (?, ?, ?, ?, ?, ?, ?)', [name, lastname, username, email, password, idrol, idstatus ], (err, result) => {
+    db.query('INSERT INTO users (Users_name, Users_lastname, Users_username, Users_email, Users_password) VALUES (?, ?, ?, ?, ?)', [name, lastname, username, email, password ], (err, result) => {
       if (err) {
         console.error('Error al crear usuario:', err);
         res.status(500).send('Error al crear usuario');
@@ -57,8 +58,9 @@ app.get('/usuarios', (req, res) => {
     });
   });
   
-    // Crear un nuevo articulo
-    app.post('/articulo', (req, res) => {
+    // Crear un nuevo articulo 
+    //falta incorporat
+    app.post('/articulos', (req, res) => {
         const { name, categoria, codigo, precio, stock, descripcion, imagen } = req.body;
         if (!name || !categoria || !codigo || !precio || !stock || !descripcion || !imagen) {
           res.status(400).send('Por favor proporciona nombre, categoria, precio, stock, descripcion, imagen');
@@ -76,6 +78,7 @@ app.get('/usuarios', (req, res) => {
     });
 
     // Crear una nueva categoria
+    //falta incorporar
     app.post('/categoria', (req, res) => {
         const { name, descripcion, estado} = req.body;
         if (!name || !descripcion || !estado) {
@@ -94,6 +97,7 @@ app.get('/usuarios', (req, res) => {
     });
       
     // crear detalle de venta
+    //falta incorporar
     app.post('/detalle de venta', (req, res) =>{
         const { cantidad, precio, descuento} = req.body;
         if (!cantidad || !precio || !descuento) {
@@ -112,6 +116,7 @@ app.get('/usuarios', (req, res) => {
     });
 
     // crear rol 
+    //no incorporado aun
     app.post('/rol', (req, res) => {
         const { text}= req.body;
         if (!text){
@@ -130,6 +135,7 @@ app.get('/usuarios', (req, res) => {
     });
     
   // Actualizar un usuario
+  //no incorporado
   app.put('/usuarios/:id', (req, res) => {
     const id = req.params.id;
     const { nombre, email, telefono } = req.body;
@@ -149,6 +155,7 @@ app.get('/usuarios', (req, res) => {
   });
   
   // Eliminar un usuario
+  //incorporado
   app.delete('/usuarios/:id', (req, res) => {
     const id = req.params.id;
   
@@ -167,6 +174,7 @@ app.get('/usuarios', (req, res) => {
   });
 
   //Inicio de sesion
+  //supuestamente incorporado
   app.post('/login', (req, res) => {
     const { email, password } = req.body;
 
@@ -197,6 +205,8 @@ app.get('/usuarios', (req, res) => {
         }
     });
 });
-app.listen(port, () => {
-  console.log(`Servidor backend corriendo en http://localhost:${port}`);
+
+// Iniciar el servidor
+app.listen(portconnect, () => {
+  console.log(`Servidor backend corriendo en http://localhost:${portconnect}`);
 });

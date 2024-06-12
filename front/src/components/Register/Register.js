@@ -26,7 +26,7 @@ function Register({onClose}) {
             return;
         }
         //envío de los datos ingresados al servidor usando Axios
-        Axios.post('http://localhost:5000/register', {
+        Axios.post('http://localhost:3001/users', {
             name: name,
             lastname: lastname,
             username: username,
